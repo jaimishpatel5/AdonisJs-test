@@ -30,3 +30,12 @@ Route.group(() => {
   Route.post('/users', 'UsersController.store')
   Route.put('/user', 'UsersController.update').middleware('auth')
 }).prefix('/api')
+
+Route.group(() => {
+  Route.post('/books/get', 'BookController.get').middleware('auth')
+  Route.post('/books/store', 'BookController.store').middleware('auth')
+  Route.put('/books/update', 'BookController.update').middleware('auth')
+  Route.post('/books/addToBookmarks', 'BookController.addToBookmarks').middleware('auth')
+  Route.post('/books/removeFromBookmarks', 'BookController.removeFromBookmarks').middleware('auth')
+  Route.post('/books/getBookmarks', 'BookController.getBookmarks').middleware('auth')
+}).prefix('/api')
